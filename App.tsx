@@ -320,60 +320,60 @@ const App: React.FC = () => {
         {/* Step 2: Dashboard Layout for Analysis & Gaps */}
         {(status === AppStatus.ANALYZING || status === AppStatus.WAITING_FOR_CLARIFICATION || status === AppStatus.GENERATING_FINAL || status === AppStatus.COMPLETED) && (
           <section ref={analysisRef} className="animate-fade-in-up">
-            <div className="bg-slate-900 rounded-2xl shadow-xl border border-slate-800 overflow-hidden">
-              <div className="border-b border-slate-800 bg-slate-900/50 px-6 py-4 flex items-center justify-between">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300">
+              <div className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-full bg-emerald-500/10 text-emerald-400">
+                  <div className="p-2 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                     <CheckCircle2 size={20} />
                   </div>
-                  <h2 className="text-lg font-semibold text-white">架構分析報告</h2>
+                  <h2 className="text-lg font-semibold text-slate-800 dark:text-white">架構分析報告</h2>
                 </div>
                 {status === AppStatus.ANALYZING ? (
                     <div className="flex items-center gap-2"><LoadingDots /><span className="text-slate-400 text-sm">分析需求中...</span></div>
                 ) : (
-                    <div className="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-xs rounded-full border border-emerald-800">ANALYSIS PHASE COMPLETED</div>
+                    <div className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs rounded-full border border-emerald-200 dark:border-emerald-800">ANALYSIS PHASE COMPLETED</div>
                 )}
               </div>
 
               {state.analysisOutput && (
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
                     {/* Left Panel: Context (3 cols) */}
-                    <div className="lg:col-span-3 p-6 md:p-8 bg-slate-800/50 border-r border-slate-700/50">
+                    <div className="lg:col-span-3 p-6 md:p-8 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/50">
                         <div className="space-y-8">
                             <div>
-                                <h3 className="text-emerald-400 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span> 1. 理解與摘要
+                                <h3 className="text-emerald-600 dark:text-emerald-400 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400"></span> 1. 理解與摘要
                                 </h3>
-                                <p className="text-slate-300 leading-relaxed text-sm md:text-base">{state.analysisOutput.understanding}</p>
+                                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base">{state.analysisOutput.understanding}</p>
                             </div>
                             <div>
-                                <h3 className="text-emerald-400 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span> 2. 思維鏈推理
+                                <h3 className="text-emerald-600 dark:text-emerald-400 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400"></span> 2. 思維鏈推理
                                 </h3>
-                                <div className="text-slate-300 leading-relaxed text-sm md:text-base bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                                <div className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base bg-white dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                                     {state.analysisOutput.reasoning}
                                 </div>
                             </div>
                              <div>
-                                <h3 className="text-emerald-400 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span> 4. 擬定策略架構
+                                <h3 className="text-emerald-600 dark:text-emerald-400 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400"></span> 4. 擬定策略架構
                                 </h3>
-                                <div className="text-slate-300 leading-relaxed text-sm md:text-base">
-                                    <MarkdownRenderer content={state.analysisOutput.strategy} className="prose-invert prose-sm" />
+                                <div className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base">
+                                    <MarkdownRenderer content={state.analysisOutput.strategy} className="prose-sm" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Right Panel: Gaps & Actions (2 cols) */}
-                    <div className="lg:col-span-2 p-6 md:p-8 bg-slate-900 flex flex-col">
-                         <h3 className="text-white text-lg font-bold mb-1">3. 確認缺口 (需要您的輸入)</h3>
-                         <p className="text-slate-400 text-sm mb-6">為了產出最精準的提示詞，請協助補充以下資訊。若不確定，可留空，我將自行判斷。</p>
+                    <div className="lg:col-span-2 p-6 md:p-8 bg-white dark:bg-slate-900 flex flex-col">
+                         <h3 className="text-slate-800 dark:text-white text-lg font-bold mb-1">3. 確認缺口 (需要您的輸入)</h3>
+                         <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">為了產出最精準的提示詞，請協助補充以下資訊。若不確定，可留空，我將自行判斷。</p>
 
                          <div className="space-y-6 flex-grow">
                              {state.analysisOutput.gaps.map((gap, index) => (
                                  <div key={index} className="space-y-2 group">
-                                     <label className="block text-sm text-emerald-100/90 font-medium leading-relaxed">
+                                     <label className="block text-sm text-slate-700 dark:text-emerald-100/90 font-medium leading-relaxed">
                                          {index + 1}. {gap}
                                      </label>
                                      <input 
@@ -382,17 +382,17 @@ const App: React.FC = () => {
                                         value={state.gapAnswers[index] || ''}
                                         onChange={(e) => handleGapAnswerChange(index, e.target.value)}
                                         disabled={status !== AppStatus.WAITING_FOR_CLARIFICATION}
-                                        className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all outline-none placeholder:text-slate-600 text-sm"
+                                        className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600 text-sm"
                                      />
                                  </div>
                              ))}
                          </div>
 
                          {status === AppStatus.WAITING_FOR_CLARIFICATION && (
-                             <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row gap-4 justify-end items-center">
+                             <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row gap-4 justify-end items-center">
                                  <button 
                                     onClick={() => handleFinalSubmit(true)}
-                                    className="text-slate-400 hover:text-white text-sm font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors"
+                                    className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                                  >
                                      <FastForward size={16} />
                                      略過 (AI 自動補全)
@@ -453,9 +453,9 @@ const App: React.FC = () => {
                      </div>
                   </div>
                 ) : (
-                   <div className="bg-[#1e1e1e] dark:bg-black text-slate-200 overflow-x-auto">
+                   <div className="bg-slate-50 dark:bg-black text-slate-800 dark:text-slate-200 border-t border-slate-200 dark:border-slate-800 overflow-x-auto">
                      <div className="p-6 md:p-8">
-                       <MarkdownRenderer content={state.finalPrompt} className="prose-invert" />
+                       <MarkdownRenderer content={state.finalPrompt} />
                      </div>
                    </div>
                 )}

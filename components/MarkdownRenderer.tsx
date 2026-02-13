@@ -12,8 +12,9 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, cla
       prose-headings:font-bold 
       prose-a:text-primary-600 dark:prose-a:text-primary-400 
       prose-code:text-pink-600 dark:prose-code:text-pink-400
-      prose-pre:bg-slate-900 dark:prose-pre:bg-slate-950 prose-pre:text-slate-50 
-      prose-pre:border prose-pre:border-slate-800
+      prose-pre:bg-slate-100 dark:prose-pre:bg-slate-900 
+      prose-pre:text-slate-900 dark:prose-pre:text-slate-50 
+      prose-pre:border prose-pre:border-slate-200 dark:prose-pre:border-slate-800
       ${className}`}>
       <ReactMarkdown
         components={{
@@ -21,7 +22,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, cla
             const match = /language-(\w+)/.exec(className || '');
             return !inline ? (
               <div className="relative group">
-                <pre className={`${className} p-4 rounded-lg overflow-x-auto bg-slate-900 dark:bg-black text-slate-100 my-4 shadow-inner border border-slate-700 dark:border-slate-800`}>
+                <pre className={`${className} p-4 rounded-lg overflow-x-auto bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 my-4 shadow-sm border border-slate-200 dark:border-slate-800`}>
                   <code {...props} className={match ? `language-${match[1]}` : ''}>
                     {children}
                   </code>
